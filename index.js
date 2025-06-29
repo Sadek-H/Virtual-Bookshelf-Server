@@ -12,12 +12,15 @@ const serviceAccount = JSON.parse(decoded);
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
 });
+
+//middleware
 app.use(
   cors({
     origin: ["http://localhost:5173"],
     credentials: true,
   })
 );
+
 app.use(express.json());
 
 const verifyFirebaseToken = async (req, res, next) => {
