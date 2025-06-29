@@ -23,6 +23,7 @@ app.use(
 
 app.use(express.json());
 
+//verifyfirebase token
 const verifyFirebaseToken = async (req, res, next) => {
   const authHeader = req.headers?.authorization;
   const token = authHeader.split(" ")[1];
@@ -33,6 +34,7 @@ const verifyFirebaseToken = async (req, res, next) => {
   req.tokenEmail = userInfo.email;
   next();
 };
+
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.t5n91s9.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
