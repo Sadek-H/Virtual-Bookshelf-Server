@@ -16,7 +16,7 @@ admin.initializeApp({
 //middleware
 app.use(
   cors({
-    origin: ["http://localhost:5173"],
+    origin: ["https://fir-job-4414a.web.app"],
     credentials: true,
   })
 );
@@ -35,7 +35,7 @@ const verifyFirebaseToken = async (req, res, next) => {
   next();
 };
 
-const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.t5n91s9.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
+const uri = `mongodb+srv://${process.env.DB_USERS}:${process.env.DB_PASSW}@cluster0.t5n91s9.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
 const client = new MongoClient(uri, {
