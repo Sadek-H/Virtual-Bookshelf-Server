@@ -115,7 +115,8 @@ async function run() {
       const result = await bookCollection.findOne(query);
       res.send(result);
     });
-
+ 
+    //post request
     app.post("/add-book", verifyFirebaseToken, async (req, res) => {
       const newbook = req.body;
       const result = await bookCollection.insertOne(newbook);
