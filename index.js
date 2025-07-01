@@ -72,6 +72,18 @@ async function run() {
       res.send(result);
     });
 
+    //update status
+    app.put('/books/:id/status',async(req,res)=>{
+       const id = req.params.id;
+       const query = {_id: new ObjectId(id)};
+       const updatestatus = req.body;
+       const update = {
+        $set : updatestatus,
+       }
+       const result = await bookCollection.updateOne(query,update);
+       res.send(result);
+    })
+
     //delete review
     app.delete("/review/:id", verifyFirebaseToken, async (req, res) => {
       const id = req.params.id;
