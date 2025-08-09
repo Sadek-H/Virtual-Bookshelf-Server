@@ -16,7 +16,7 @@ admin.initializeApp({
 //middleware
 app.use(
   cors({
-    origin: ["https://fir-job-4414a.web.app"],
+    origin: true,
     credentials: true,
   })
 );
@@ -121,7 +121,7 @@ async function run() {
       const result = await bookCollection.deleteOne(query);
       res.send(result);
     });
-    app.get("/books/:id", async (req, res) => {
+    app.get("/books/:id", verifyFirebaseToken, async (req, res) => {
       const id = req.params.id;
       const query = { _id: new ObjectId(id) };
       const result = await bookCollection.findOne(query);
